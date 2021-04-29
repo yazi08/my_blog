@@ -1,0 +1,53 @@
+body {
+    background: #2c2c2c;
+}
+
+
+aside {
+    float: left;
+    background:#181818; /* задний фон */
+    width 20%;
+    padding: 2.5%;
+    height: 100vh;
+    color:#fff;
+    border-right: 5px solid #4d4d4d;
+    position: fixed
+
+}
+
+aside img {
+    width:80px;
+    float: left;
+    margin-bottom: 20px;
+    margin-left:30px;
+}
+
+aside ul {list-style: none}
+aside ul li {
+    margin-top: 10%;
+    margin-right:30px;
+
+
+
+}
+body h1 {
+    color:#fff;
+    text-align: center;
+
+
+}
+
+#nav {
+
+    list-style: none;
+    color:black;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 50px;
+
+}
+
+.alert-warning{
+    margin-right: 100px;
+
+}
