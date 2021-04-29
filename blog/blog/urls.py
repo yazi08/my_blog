@@ -21,6 +21,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('and/blog/', views.home, name = "home"),
-    path('blog/', include("home_messages.urls")),
+    path('blog/blogs/', include("home_messages.urls")),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
