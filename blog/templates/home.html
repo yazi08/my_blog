@@ -24,8 +24,25 @@
     </aside>
 
     <h1>Добро пожаловать !</h1>
+
     {% block body %}
     {% endblock body %}
+    <nav>
+
+        <ul>
+            {% for p in paginator.page_range %}
+            {% if page_obj.number == p %}
+            <li id = "pag">{{p}}</li>
+            {% else %}
+            <li>
+                <a id = "pag_1"  href="?page={{ p }}">{{ p }}</a>
+
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+
+    </nav>
 
 </body>
 </html>
