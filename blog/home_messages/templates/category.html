@@ -1,0 +1,18 @@
+
+{% extends "home.html" %}
+
+
+{% block body %}
+
+    {% for el in cats %}
+        <div class="alter alert-warning">
+
+        <ul id = "nav" >
+            <li><a href="{{el.get_absolute_url}}">{{el.name}}</a></li>
+
+        </ul>
+        </div>
+    {% endfor %}
+
+
+{% endblock body %}

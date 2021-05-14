@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
-from .models import Blog
+from .models import *
 from django.views.generic import DetailView,CreateView,ListView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
@@ -19,8 +19,25 @@ class HomeMessages(ListView):
     context_object_name = 'data'
 
 
+def show_category(request,cat_id):
+    posts = Blog.objects.filter(cat_id=cat_id)
+    cats = Category.objects.all()
+    context = {
+        'posts':posts,
+        'cats': cats,
+        'cat_selected':cat_id
+    }
+    return render(request, 'category_1.html', context=context)
 
 
+def show_category_1(request):
+    cats = Category.objects.all()
+    context = {
+
+        'cats':cats,
+
+    }
+    return render(request,'category.html', context=context)
 
 
 class RegisterUser(CreateView):

@@ -86,3 +86,12 @@ nav ul li {
 #pag_1{
     color: #fff;
 }
+
+#nav_1 {
+    list-style: none;
+    color:black;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 50px;
+
+}

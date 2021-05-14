@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+
+
+{% block body %}
+
+    {% for el in posts %}
+        <div class="alter alert-warning">
+
+        <ul id = "nav" >
+            <li><h3>{{el.name_blog}}</h3></li>
+            <li><p>{{el.data_blog}}</p></li>
+            <li><p>{{el.description_blog}}</p></li>
+            <li><h4>{{el.name_blogers}}</h4></li>
+        </ul>
+        </div>
+
+    {% endfor %}
+
+{% endblock body %}
