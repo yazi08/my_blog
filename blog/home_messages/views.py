@@ -6,26 +6,62 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from blog.views import *
+
+
+
+
 
 class HomeDetailView(DetailView):
     model = Blog
     template_name = "home_detail.html"
     context_object_name = 'blog'
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['menu']=menu
+        return context
+
+# def homedeta(request,pk):
+#     blog = Blog.objects.filter(pk=pk)
+#     context ={
+#         'blog':blog
+#
+#     }
+#     return render(request, 'home_detail.html', context=context)
 
 class HomeMessages(ListView):
     paginate_by = 1
     model = Blog
     template_name = "home_messages.html"
     context_object_name = 'data'
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['menu']=menu
+        return context
+#
+#
+#     def get_queryset(self):
+#
+#         return Blog.objects.filter(cat__id=self.kwargs['blog_id'])
+# def homemess(request):
+#     data = Blog.objects.all()
+#     context_1 = {
+#         'paginate_by' : 1,
+#         'data' :data,
+#
+#
+#     }
+#     return render(request, 'home_messages.html', context_1=context_1)
 
+#
 
 def show_category(request,cat_id):
     posts = Blog.objects.filter(cat_id=cat_id)
     cats = Category.objects.all()
     context = {
         'posts':posts,
-        'cats': cats,
-        'cat_selected':cat_id
+        'menu': menu,
+
     }
     return render(request, 'category_1.html', context=context)
 
@@ -35,6 +71,7 @@ def show_category_1(request):
     context = {
 
         'cats':cats,
+        'menu': menu,
 
     }
     return render(request,'category.html', context=context)
@@ -46,5 +83,7 @@ class RegisterUser(CreateView):
     success_url = reverse_lazy('login')
 
     def get_context_data(self, *, object_list=None, **kwargs):
+        context_1 = super().get_context_data(**kwargs)
+        context_1['menu'] = menu
         context = super().get_context_data(**kwargs)
-        return dict(list(context.items()))
+        return context_1

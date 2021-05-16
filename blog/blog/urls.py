@@ -20,7 +20,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('and/blog/', views.home, name = "home"),
-    path('blog/blogs/', include("home_messages.urls")),
+    path('', views.home, name = "home"),
+    path('pro_nas/', views.pro_nas, name = "pro_nas"),
+    path('contacts/', views.contacts, name = "contacts"),
+    path('', include("home_messages.urls")),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

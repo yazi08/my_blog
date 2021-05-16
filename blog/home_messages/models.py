@@ -13,6 +13,10 @@ class Blog(models.Model):
     def __str__(self):
         return f"{self.name_blog,self.data_blog,self.description_blog, self.name_blogers}"
 
+    def get_absolute_url(self):
+
+        return reverse('blog_key', kwargs={'pk': self.pk})
+
 class Category(models.Model):
     name = models.CharField(max_length = 100,db_index =True)
 

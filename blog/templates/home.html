@@ -24,8 +24,9 @@
 
             <li><a href="{% url 'cat' %}">Категории</a></li>
 
-            <li><a href="#">Про нас</a></li>
-            <li><a href="#">Контакты</a></li>
+            {% for m in menu %}
+            <li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+            {% endfor %}
 
         </ul>
 
