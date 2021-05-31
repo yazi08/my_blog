@@ -21,6 +21,10 @@ class HomeDetailView(DetailView):
         context['menu']=menu
         return context
 
+    # def get_queryset(self):
+    #
+    #     return Blog.objects.filter(cat__slug=self.kwargs['slug'])
+
 # def homedeta(request,pk):
 #     blog = Blog.objects.filter(pk=pk)
 #     context ={
@@ -40,9 +44,7 @@ class HomeMessages(ListView):
         return context
 #
 #
-#     def get_queryset(self):
-#
-#         return Blog.objects.filter(cat__id=self.kwargs['blog_id'])
+
 # def homemess(request):
 #     data = Blog.objects.all()
 #     context_1 = {
@@ -54,16 +56,29 @@ class HomeMessages(ListView):
 #     return render(request, 'home_messages.html', context_1=context_1)
 
 #
+class ShowCategory(ListView):
+    model = Blog
+    template_name = 'category_1.html'
+    context_object_name = 'posts'
 
-def show_category(request,cat_id):
-    posts = Blog.objects.filter(cat_id=cat_id)
-    cats = Category.objects.all()
-    context = {
-        'posts':posts,
-        'menu': menu,
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['menu']=menu
+        return context
+    def get_queryset(self):
 
-    }
-    return render(request, 'category_1.html', context=context)
+         return Blog.objects.filter(cat__slug=self.kwargs['cat_slug'])
+
+
+# def show_category(request,cat_id):
+#     posts = Blog.objects.filter(pk=cat_id)
+#     cats = Category.objects.all()
+#     context = {
+#         'posts':posts,
+#         'menu': menu,
+#
+#     }
+#     return render(request, 'category_1.html', context=context)
 
 
 def show_category_1(request):
